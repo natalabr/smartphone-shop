@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Client {
 
-    public int id;
+    public String id;
     public String salutation;
     public String firstname;
     public String lastname;
@@ -18,6 +18,6 @@ public class Client {
     public ArrayList<Adress> adresses;
 
     public String toString() {
-        return salutation + " " + lastname + " " + firstname;
+        return id + ": " + salutation + " " + lastname + " " + firstname;
     }
 }

@@ -2,31 +2,41 @@ package controller;
 
 import persistence.Client;
 import persistence.Order;
+import persistence.Smartphone;
+import repository.ClientRepository;
 import repository.OrderRepository;
+import repository.SmartphoneRepository;
 
 import java.util.List;
 
 public class OrderController {
 
-    private OrderRepository orderRepository;
+    private OrderRepository orderRepository = new OrderRepository();
+    private SmartphoneRepository smartphoneRepository = new SmartphoneRepository();
 
     public List<Order> getOrders() {
         return orderRepository.getOrders();
     }
 
-    public Order getOrder(int id) {
-        return orderRepository.getOrder(id);
+    public List<Order> getOrders(String id) {
+
+        return orderRepository.getOrders(id);
     }
 
-    public void addNewOrder(Order order, Client client) {
-        orderRepository.addNewOrder(order, client);
+    public void addOrder(Order order) {
+        orderRepository.addOrder(order);
     }
 
-    public void updateOrder(Order order) {
-        orderRepository.updateOrder(order);
+    public double getSmartphonePrice(String smartphoneId) {
+        Smartphone smartphone = smartphoneRepository.getSmartphone(smartphoneId);
+        if (smartphone == null) {
+            return 0;
+        }
+        return smartphone.unitPrice;
     }
 
-    public void deleteOrder(int id) {
-        orderRepository.deleteOrder(id);
+    public boolean cancelOrder(String id) {
+
+        return orderRepository.cancelOrder(id);
     }
 }
