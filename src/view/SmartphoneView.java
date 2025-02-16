@@ -2,8 +2,10 @@ package view;
 
 import controller.SmartphoneController;
 import main.Main;
+import persistence.Connectivity;
 import persistence.Smartphone;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -61,6 +63,39 @@ public class SmartphoneView {
         }
         System.out.println("Enter Smartphone brand: ");
         smartphoneToUpdate.brand = myScanner.next();
+        System.out.println("Enter Smartphone model: ");
+        smartphoneToUpdate.model = myScanner.next();
+        System.out.println("Enter Smartphone unitPrice: ");
+        smartphoneToUpdate.unitPrice = Double.parseDouble(myScanner.next());
+        System.out.println("Enter Smartphone memory: ");
+        smartphoneToUpdate.memory = Integer.parseInt(myScanner.next());
+        System.out.println("Enter Smartphone screen size: ");
+        smartphoneToUpdate.screenSize = Double.parseDouble(myScanner.next());
+        System.out.println("Enter Smartphone storage capacity: ");
+        smartphoneToUpdate.storageCapacity = Integer.parseInt(myScanner.next());
+        System.out.println("Enter Smartphone operating system: ");
+        smartphoneToUpdate.operatingSystem = myScanner.next();
+        System.out.println("Enter Smartphone operating system version ");
+        smartphoneToUpdate.operatingSystemVersion = myScanner.next();
+        System.out.println("Enter pixel resolution - width: ");
+        smartphoneToUpdate.pixelResolution.width = Integer.parseInt(myScanner.next());
+        System.out.println("Enter pixel resolution - height: ");
+        smartphoneToUpdate.pixelResolution.height = Integer.parseInt(myScanner.next());
+        System.out.println("Enter Smartphone number of processor cores: ");
+        smartphoneToUpdate.numberOfProcessorCores = myScanner.next();
+        System.out.println("Enter Smartphone baterry capacity: ");
+        smartphoneToUpdate.batteryCapacity = Integer.parseInt(myScanner.next());
+
+        boolean addConnectivity = true;
+        do {
+            System.out.println("Enter Smartphone connectivity: ");
+            smartphoneToUpdate.connectivity = Connectivity.valueOf(myScanner.next());
+            System.out.println("Do you want to add another connectivity? Y/N: ");
+            addConnectivity = myScanner.next().toLowerCase().equals("y");
+        } while (addConnectivity);
+
+        System.out.println("Enter Smartphone celluar standard: ");
+        smartphoneToUpdate.celluarStandard = myScanner.next();
         smartphoneController.updateSmartphone(smartphoneToUpdate);
     }
 
@@ -97,6 +132,34 @@ public class SmartphoneView {
         Smartphone newSmartphone = new Smartphone();
         System.out.println("Enter Smartphone brand: ");
         newSmartphone.brand = myScanner.next();
+        System.out.println("Enter Smartphone brand: ");
+        newSmartphone.brand = myScanner.next();
+        System.out.println("Enter Smartphone model: ");
+        newSmartphone.model = myScanner.next();
+        System.out.println("Enter Smartphone unitPrice: ");
+        newSmartphone.unitPrice = Double.parseDouble(myScanner.next());
+        System.out.println("Enter Smartphone memory: ");
+        newSmartphone.memory = Integer.parseInt(myScanner.next());
+        System.out.println("Enter Smartphone screen size: ");
+        newSmartphone.screenSize = Double.parseDouble(myScanner.next());
+        System.out.println("Enter Smartphone storage capacity: ");
+        newSmartphone.storageCapacity = Integer.parseInt(myScanner.next());
+        System.out.println("Enter Smartphone operating system: ");
+        newSmartphone.operatingSystem = myScanner.next();
+        System.out.println("Enter Smartphone operating system version ");
+        newSmartphone.operatingSystemVersion = myScanner.next();
+        System.out.println("Enter pixel resolution - width: ");
+        newSmartphone.pixelResolution.width = Integer.parseInt(myScanner.next());
+        System.out.println("Enter pixel resolution - height: ");
+        newSmartphone.pixelResolution.height = Integer.parseInt(myScanner.next());
+        System.out.println("Enter Smartphone number of processor cores: ");
+        newSmartphone.numberOfProcessorCores = myScanner.next();
+        System.out.println("Enter Smartphone baterry capacity: ");
+        newSmartphone.batteryCapacity = Integer.parseInt(myScanner.next());
         smartphoneController.addSmartphone(newSmartphone);
+        System.out.println("Enter Smartphone connectivity: ");
+        newSmartphone.connectivity = Connectivity.valueOf(myScanner.next());
+        System.out.println("Enter Smartphone celluar standard: ");
+        newSmartphone.celluarStandard = myScanner.next();
     }
 }

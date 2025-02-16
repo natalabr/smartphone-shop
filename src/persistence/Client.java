@@ -1,7 +1,6 @@
 package persistence;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class Client {
 
@@ -15,7 +14,7 @@ public class Client {
     public LocalDate dateOfBirth;
     public String username;
     public String password;
-    public ArrayList<Adress> adresses;
+    public Adress adress;
 
     public String toString() {
         return id + ": " + salutation + " " + lastname + " " + firstname;

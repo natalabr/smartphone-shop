@@ -13,4 +13,8 @@ public class Order {
     public boolean active;
     public ArrayList<OrderItem> orderItems = new ArrayList<>();
 
+    public String toString() {
+        return id + ": " + orderNumber + " " + orderDate + " " + active;
+    }
+
 }

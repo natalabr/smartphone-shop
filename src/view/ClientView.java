@@ -3,15 +3,18 @@ package view;
 import controller.ClientController;
 import controller.SmartphoneController;
 import main.Main;
+import persistence.Adress;
 import persistence.Client;
 import persistence.Smartphone;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
 public class ClientView {
 
     ClientController clientController = new ClientController();
+    Adress adress = new Adress();
 
     public void clientMenu() {
 
@@ -60,9 +63,31 @@ public class ClientView {
             System.out.println("Client " + clientIdToUpdate + " does not exist");
             return;
         }
+
+        System.out.println("Enter Client salutation: ");
+        clientToUpdate.salutation = myScanner.next();
         System.out.println("Enter Client first name: ");
         clientToUpdate.firstname = myScanner.next();
-        // TODO: Add rest of the fields
+        System.out.println("Enter Client last name: ");
+        clientToUpdate.lastname = myScanner.next();
+        System.out.println("Enter Client private phone number: ");
+        clientToUpdate.privatePhoneNumber = myScanner.next();
+        System.out.println("Enter Client mobile phone number: ");
+        clientToUpdate.mobilePhoneNumber = myScanner.next();
+        System.out.println("Enter Client email: ");
+        clientToUpdate.emailAdress = myScanner.next();
+        System.out.println("Enter Client dateOfBirth: ");
+        clientToUpdate.dateOfBirth = LocalDate.parse(myScanner.next());
+        System.out.println("Enter Client username: ");
+        clientToUpdate.username = myScanner.next();
+        System.out.println("Enter Client password: ");
+        clientToUpdate.password = myScanner.next();
+        System.out.println("Enter Client address - city: ");
+        clientToUpdate.adress.city = myScanner.next();
+        System.out.println("Enter Client address - street: ");
+        clientToUpdate.adress.street = myScanner.next();
+        System.out.println("Enter Client address - zip code: ");
+        clientToUpdate.adress.zipCode = myScanner.next();
         clientController.updateClient(clientToUpdate);
     }
 
@@ -99,6 +124,26 @@ public class ClientView {
         Client newClient = new Client();
         System.out.println("Enter Client first name: ");
         newClient.firstname = myScanner.next();
+        System.out.println("Enter Client last name: ");
+        newClient.lastname = myScanner.next();
+        System.out.println("Enter Client private phone number: ");
+        newClient.privatePhoneNumber = myScanner.next();
+        System.out.println("Enter Client mobile phone number: ");
+        newClient.mobilePhoneNumber = myScanner.next();
+        System.out.println("Enter Client email: ");
+        newClient.emailAdress = myScanner.next();
+        System.out.println("Enter Client dateOfBirth: ");
+        newClient.dateOfBirth = LocalDate.parse(myScanner.next());
+        System.out.println("Enter Client username: ");
+        newClient.username = myScanner.next();
+        System.out.println("Enter Client password: ");
+        newClient.password = myScanner.next();
+        System.out.println("Enter Client address - city: ");
+        newClient.adress.city = myScanner.next();
+        System.out.println("Enter Client address - street: ");
+        adress.street = myScanner.next();
+        System.out.println("Enter Client address - zip code: ");
+        adress.zipCode = myScanner.next();
         clientController.addClient(newClient);
     }
 }
