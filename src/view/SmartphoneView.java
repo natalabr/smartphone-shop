@@ -3,6 +3,7 @@ package view;
 import controller.SmartphoneController;
 import main.Main;
 import persistence.Connectivity;
+import persistence.PixelResolution;
 import persistence.Smartphone;
 
 import java.time.LocalDate;
@@ -61,11 +62,12 @@ public class SmartphoneView {
             System.out.println("Smartphone " + smartphoneIdToUpdate + " does not exist");
             return;
         }
+
         System.out.println("Enter Smartphone brand: ");
         smartphoneToUpdate.brand = myScanner.next();
         System.out.println("Enter Smartphone model: ");
         smartphoneToUpdate.model = myScanner.next();
-        System.out.println("Enter Smartphone unitPrice: ");
+        System.out.println("Enter Smartphone unit price: ");
         smartphoneToUpdate.unitPrice = Double.parseDouble(myScanner.next());
         System.out.println("Enter Smartphone memory: ");
         smartphoneToUpdate.memory = Integer.parseInt(myScanner.next());
@@ -78,6 +80,7 @@ public class SmartphoneView {
         System.out.println("Enter Smartphone operating system version ");
         smartphoneToUpdate.operatingSystemVersion = myScanner.next();
         System.out.println("Enter pixel resolution - width: ");
+        smartphoneToUpdate.pixelResolution = new PixelResolution();
         smartphoneToUpdate.pixelResolution.width = Integer.parseInt(myScanner.next());
         System.out.println("Enter pixel resolution - height: ");
         smartphoneToUpdate.pixelResolution.height = Integer.parseInt(myScanner.next());
@@ -88,14 +91,30 @@ public class SmartphoneView {
 
         boolean addConnectivity = true;
         do {
+            System.out.println("Possible Smartphone connectivity options: ");
+            System.out.println("1 - Bluetooh");
+            System.out.println("2 - NFC");
+            System.out.println("3 - USB");
+            System.out.println("4 - Hotspot");
+            System.out.println("5 - WLAN");
+            System.out.println("0 - NONE");
             System.out.println("Enter Smartphone connectivity: ");
-            smartphoneToUpdate.connectivity = Connectivity.valueOf(myScanner.next());
+            smartphoneToUpdate.connectivity = switch (myScanner.nextInt()) {
+                case 1 -> Connectivity.BLUETOOTH;
+                case 2 -> Connectivity.NFC;
+                case 3 -> Connectivity.USB;
+                case 4 -> Connectivity.HOTSPOT;
+                case 5 -> Connectivity.WLAN;
+                default -> Connectivity.NONE;
+            };
+
             System.out.println("Do you want to add another connectivity? Y/N: ");
             addConnectivity = myScanner.next().toLowerCase().equals("y");
         } while (addConnectivity);
 
         System.out.println("Enter Smartphone celluar standard: ");
         smartphoneToUpdate.celluarStandard = myScanner.next();
+
         smartphoneController.updateSmartphone(smartphoneToUpdate);
     }
 
@@ -132,11 +151,9 @@ public class SmartphoneView {
         Smartphone newSmartphone = new Smartphone();
         System.out.println("Enter Smartphone brand: ");
         newSmartphone.brand = myScanner.next();
-        System.out.println("Enter Smartphone brand: ");
-        newSmartphone.brand = myScanner.next();
         System.out.println("Enter Smartphone model: ");
         newSmartphone.model = myScanner.next();
-        System.out.println("Enter Smartphone unitPrice: ");
+        System.out.println("Enter Smartphone unit price: ");
         newSmartphone.unitPrice = Double.parseDouble(myScanner.next());
         System.out.println("Enter Smartphone memory: ");
         newSmartphone.memory = Integer.parseInt(myScanner.next());
@@ -149,6 +166,7 @@ public class SmartphoneView {
         System.out.println("Enter Smartphone operating system version ");
         newSmartphone.operatingSystemVersion = myScanner.next();
         System.out.println("Enter pixel resolution - width: ");
+        newSmartphone.pixelResolution = new PixelResolution();
         newSmartphone.pixelResolution.width = Integer.parseInt(myScanner.next());
         System.out.println("Enter pixel resolution - height: ");
         newSmartphone.pixelResolution.height = Integer.parseInt(myScanner.next());
@@ -156,10 +174,33 @@ public class SmartphoneView {
         newSmartphone.numberOfProcessorCores = myScanner.next();
         System.out.println("Enter Smartphone baterry capacity: ");
         newSmartphone.batteryCapacity = Integer.parseInt(myScanner.next());
-        smartphoneController.addSmartphone(newSmartphone);
-        System.out.println("Enter Smartphone connectivity: ");
-        newSmartphone.connectivity = Connectivity.valueOf(myScanner.next());
+
+        boolean addConnectivity = true;
+        do {
+            System.out.println("Possible Smartphone connectivity options: ");
+            System.out.println("1 - Bluetooh");
+            System.out.println("2 - NFC");
+            System.out.println("3 - USB");
+            System.out.println("4 - Hotspot");
+            System.out.println("5 - WLAN");
+            System.out.println("0 - NONE");
+            System.out.println("Enter Smartphone connectivity: ");
+            newSmartphone.connectivity = switch (myScanner.nextInt()) {
+                case 1 -> Connectivity.BLUETOOTH;
+                case 2 -> Connectivity.NFC;
+                case 3 -> Connectivity.USB;
+                case 4 -> Connectivity.HOTSPOT;
+                case 5 -> Connectivity.WLAN;
+                default -> Connectivity.NONE;
+            };
+
+            System.out.println("Do you want to add another connectivity? Y/N: ");
+            addConnectivity = myScanner.next().toLowerCase().equals("y");
+        } while (addConnectivity);
+
         System.out.println("Enter Smartphone celluar standard: ");
         newSmartphone.celluarStandard = myScanner.next();
+
+        smartphoneController.addSmartphone(newSmartphone);
     }
 }

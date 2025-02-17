@@ -1,6 +1,7 @@
 package persistence;
 
 public enum Connectivity {
+    NONE ("none"),
     BLUETOOTH ("Bluetooth"),
     NFC ("NFC"),
     USB ("USB"),

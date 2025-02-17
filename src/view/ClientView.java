@@ -5,6 +5,7 @@ import controller.SmartphoneController;
 import main.Main;
 import persistence.Adress;
 import persistence.Client;
+import persistence.PixelResolution;
 import persistence.Smartphone;
 
 import java.time.LocalDate;
@@ -83,6 +84,7 @@ public class ClientView {
         System.out.println("Enter Client password: ");
         clientToUpdate.password = myScanner.next();
         System.out.println("Enter Client address - city: ");
+        clientToUpdate.adress = new Adress();
         clientToUpdate.adress.city = myScanner.next();
         System.out.println("Enter Client address - street: ");
         clientToUpdate.adress.street = myScanner.next();
@@ -122,6 +124,8 @@ public class ClientView {
     private void addClient(Scanner myScanner) {
 
         Client newClient = new Client();
+        System.out.println("Enter Client salutation: ");
+        newClient.salutation = myScanner.next();
         System.out.println("Enter Client first name: ");
         newClient.firstname = myScanner.next();
         System.out.println("Enter Client last name: ");
@@ -139,6 +143,7 @@ public class ClientView {
         System.out.println("Enter Client password: ");
         newClient.password = myScanner.next();
         System.out.println("Enter Client address - city: ");
+        newClient.adress = new Adress();
         newClient.adress.city = myScanner.next();
         System.out.println("Enter Client address - street: ");
         adress.street = myScanner.next();
